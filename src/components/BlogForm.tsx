@@ -11,33 +11,16 @@ type BlogFormProps = {
 export default function BlogForm({ mode, initialData }: BlogFormProps) {
   const [title, setTitle] = useState(initialData?.title || "");
   const [content, setContent] = useState(initialData?.content || "");
-  const [errors, setErrors] = useState({ title: "", content: "" });
+  // const [errors, setErrors] = useState({ title: "", content: "" });
 
   const isEdit = mode === "edit";
   const pageTitle = isEdit ? "記事を編集" : "新しい記事を作成";
   const submitButtonText = isEdit ? "更新する" : "投稿する";
 
-  const validateForm = () => {
-    const newErrors = { title: "", content: "" };
-    
-    if (!title.trim()) {
-      newErrors.title = "タイトルは必須項目です";
-    }
-    
-    if (!content.trim()) {
-      newErrors.content = "内容は必須項目です";
-    }
-    
-    setErrors(newErrors);
-    return !newErrors.title && !newErrors.content;
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      // フォーム送信処理
-      console.log("Form submitted:", { title, content });
-    }
+    // フォーム送信処理
+    console.log("Form submitted:", { title, content });
   };
 
   return (
